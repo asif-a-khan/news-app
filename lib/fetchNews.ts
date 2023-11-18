@@ -43,7 +43,7 @@ const fetchNews = async (
 
   // Fetch function with Next.js 13 caching...
   const res = await fetch(
-    "https://xihe.stepzen.net/api/hissing-quokka/__graphql",
+    "https://xihe.stepzen.net/api/news-app/__graphql",
     {
       method: "POST",
       cache: isDynamic ? "no-cache" : "default",
@@ -80,4 +80,4 @@ const fetchNews = async (
 export default fetchNews;
 
 // Example Import
-// stepzen import curl "http://api.mediastack.com/v1/news?access_key=abc"
+// stepzen import curl "http://api.mediastack.com/v1/news?access_key=abc&countries=us%2Cgb&limit=100&offset=0&sort=published_desc"
