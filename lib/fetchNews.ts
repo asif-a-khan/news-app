@@ -8,16 +8,22 @@ const fetchNews = async (
 ) => {
   const query = gql`
     query MyQuery(
-      $access_key: String!
-      $categories: String!
-      $keywords: String
+      $access_key: String, 
+      $categories: String, 
+      $countries: String, 
+      $keywords: String, 
+      $limit: String, 
+      $offset: String, 
+      $sort: String
     ) {
       myQuery(
         access_key: $access_key
         categories: $categories
-        countries: "gb"
-        sort: "published_desc"
+        countries: $countries
         keywords: $keywords
+        limit: $limit
+        offset: $offset
+        sort: $sort
       ) {
         data {
           author
@@ -43,7 +49,7 @@ const fetchNews = async (
 
   // Fetch function with Next.js 13 caching...
   const res = await fetch(
-    "https://xihe.stepzen.net/api/news-app/__graphql",
+    "https://eppertshausen.stepzen.net/api/news-app/__graphql",
     {
       method: "POST",
       cache: isDynamic ? "no-cache" : "default",
@@ -80,4 +86,4 @@ const fetchNews = async (
 export default fetchNews;
 
 // Example Import
-// stepzen import curl "http://api.mediastack.com/v1/news?access_key=abc&countries=us%2Cgb&limit=100&offset=0&sort=published_desc"
+// stepzen import curl "http://api.mediastack.com/v1/news?access_key=abc"
